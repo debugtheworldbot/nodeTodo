@@ -1,19 +1,27 @@
-const  program = require('commander');
+const homedir=require('os').homedir()
+const home=process.env.HOME || homedir
+const p=require('path')
+const dbPath=p.join(home,'.todo')
+const fs=require('fs')
+module.exports.add=(title)=>{
+    fs.readFile(dbPath, {flag:'a+'},(error,data)=>{
+        if(error){console.log(error)} else {
+            let list
+            try{
+                list=JSON.parse(data.toString())
+            }catch (err) {
+                list=[]
+            }
+            console.log(list)
+            const task={
+                title,
+                done:false
+            }
+            list.push(task)
+            const string=JSON.stringify(list)
+            fs.writeFile(dbPath,string+'\n',(err2)=>console.log(err2))
+        }
+        }
+    );
 
-program
-    .option('-d, --debug', 'output extra debugging')
-program
-    .command('add')
-    .description('add a task')
-    .action((...args) => {
-        const word=args.slice(1).join('').split(',').join(' ')
-        console.log(word);
-    });
-program
-    .command('clear')
-    .description('clear all tasks')
-    .action((...args) => {
-        console.log('clear');
-    });
-program.parse(process.argv);
-console.log(program.debug)
+}
