@@ -1,4 +1,4 @@
-const  program = require('commander');
+const program = require('commander');
 const api=require('./index.js')
 
 program
@@ -8,12 +8,21 @@ program
     .description('add a task')
     .action((...args) => {
         const word=args.slice(1).join('').split(',').join(' ')
-        api.add(word)
+        api.add(word).then(()=>console.log('success!'),()=>console.log('error'))
     });
 program
     .command('clear')
     .description('clear all tasks')
-    .action((...args) => {
-        console.log('clear');
+    .action(() => {
+        api.clear().then(()=>console.log('success!'),()=>console.log('error'))
     });
+program
+    .command('show')
+    .description('show all tasks')
+    .action(()=>{
+        void api.show()
+    })
+
+
 program.parse(process.argv);
+
