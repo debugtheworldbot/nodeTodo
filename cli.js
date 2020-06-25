@@ -17,4 +17,3 @@ program
         console.log('clear');
     });
 program.parse(process.argv);
-console.log(program.debug)

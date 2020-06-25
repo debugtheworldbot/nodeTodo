@@ -1,7 +1,9 @@
 {
   "name": "node-todo",
   "version": "0.0.1",
-  "main": "cli.js",
+  "main": "index.js",
+  "repository": "git@github.com:debugtheworldbot/nodeTodo.git",
+  "author": "debugtheworldbot <istiancz@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "commander": "^5.1.0"
