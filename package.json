@@ -1,5 +1,11 @@
 {
-  "name": "node-todo",
+  "name": "node-todo-list-furious",
+  "bin": {
+    "t": "cli.js"
+  },
+  "files": [
+    "*.js"
+  ],
   "version": "0.0.1",
   "main": "index.js",
   "repository": "git@github.com:debugtheworldbot/nodeTodo.git",
